@@ -1,0 +1,704 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "My API",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/Admin/gettech": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Technologies"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Technologies"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Technologies"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Admin/loginadmin/{username}/{password}": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "password",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Mentor/getmentordeatils": {
+      "get": {
+        "tags": [
+          "Mentor"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Mentordetails"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Mentordetails"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Mentordetails"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Mentor/Rementor": {
+      "post": {
+        "tags": [
+          "Mentor"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Mentordetails"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Mentordetails"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Mentordetails"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Mentordetails"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Mentor/mentorlogin/{username}/{password}": {
+      "get": {
+        "tags": [
+          "Mentor"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "password",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Mentordetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Mentordetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Mentordetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Mentor/addnewskill": {
+      "post": {
+        "tags": [
+          "Mentor"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MentorSkills"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MentorSkills"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MentorSkills"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MentorSkills"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Mentor/ViewRequest/{id}": {
+      "get": {
+        "tags": [
+          "Mentor"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Trainings"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Trainings"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Trainings"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Values": {
+      "get": {
+        "tags": [
+          "Values"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Values"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Values/{id}": {
+      "get": {
+        "tags": [
+          "Values"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Values"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Values"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Usertable": {
+        "type": "object",
+        "properties": {
+          "userid": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstname": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastname": {
+            "type": "string",
+            "nullable": true
+          },
+          "contactnumber": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "regDatetime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "regCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "forceResetPassword": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "active": {
+            "type": "string",
+            "nullable": true
+          },
+          "trainings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Trainings"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Trainings": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "mentorId": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "skillId": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "mentor": {
+            "$ref": "#/components/schemas/Mentordetails"
+          },
+          "skill": {
+            "$ref": "#/components/schemas/Technologies"
+          },
+          "user": {
+            "$ref": "#/components/schemas/Usertable"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Mentordetails": {
+        "type": "object",
+        "properties": {
+          "mentorid": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "linkedinUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "regDatetime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "regCode": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "yearsOfExperience": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "active": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "mentorName": {
+            "type": "string",
+            "nullable": true
+          },
+          "mentorSkills": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MentorSkills"
+            },
+            "nullable": true
+          },
+          "trainings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Trainings"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MentorSkills": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "mid": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "sid": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "selfRating": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "yearsOfExp": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "trainingsDelivered": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "facilitiesOffered": {
+            "type": "string",
+            "nullable": true
+          },
+          "m": {
+            "$ref": "#/components/schemas/Mentordetails"
+          },
+          "s": {
+            "$ref": "#/components/schemas/Technologies"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Technologies": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "toc": {
+            "type": "string",
+            "nullable": true
+          },
+          "duration": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "prerequites": {
+            "type": "string",
+            "nullable": true
+          },
+          "mentorSkills": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MentorSkills"
+            },
+            "nullable": true
+          },
+          "trainings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Trainings"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

@@ -1,0 +1,153 @@
+<nav class="navbar navbar-expand-md bg-dark">
+
+<ul class="navbar-nav">
+<li>
+<a class="nav-link text-white" routerLink="/startpage/"><b><i class="fa fa-home" style="font-size:24px"></i> &nbsp;&nbsp;Home</b></a>
+</li>     
+</ul>
+<a class="nav-link text-white" style="margin-left: 450px;"> 
+<b><i class="fa fa-desktop" style="font-size:24px"></i>&nbsp;&nbsp;MENTOR ON DEMAND</b></a>
+
+
+</nav>
+<body>
+<div class="col mx-auto">
+<br/>
+<br/>
+<br/>
+<br/>
+<div class="card mx-auto login-wrap" style="width:700px;">
+
+
+<form (ngSubmit)="registration()"  #registrationForm1="ngForm">
+
+<div class="row" style="text-align: center">
+<div class="col-md-1"></div>
+    <h3 class="text-white" style="margin-left: 120px;">User Registration</h3>
+<div class="col-md-1"></div>
+</div>   
+<br/>  
+<div class="row">
+<div class="col-md-1"></div>
+<div class="col-md-5">
+        <div class="form-group">
+            <label for="user_name"><b>User Name</b></label>
+            <br />
+            <input type="text" class="form-control" id="user_name" placeholder="Enter User Name" name="username" [(ngModel)]="user.username" #userName="ngModel" required>
+        <!-- gyuyuy -->
+            <div class="text-error text-danger" *ngIf="userName.dirty && userName.touched && !userName.valid">
+                Username is required
+            </div>
+            <div class="text-error text-danger" *ngIf="userName.touched && UniqueUserName(userName.value)">
+                Username already exist
+            </div>
+    
+
+     <!-- hbuguy -->
+        </div>
+</div>
+<div class="col-md-5">
+        <div class="form-group">
+            <label for="user_pass"><b>Password</b> </label>                            
+            <input type="password" class="form-control" id="user_pass" [(ngModel)]="user.password" maxlength="6" placeholder="Enter Password (6 characters)" name="userpassword" #userPass="ngModel"required>
+            <!-- <div class="text-error text-danger" *ngIf="userPass.dirty && userPass.touched && !userPass.valid">
+                Password is required
+            </div> -->
+        </div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-1"></div>
+<div class="col-md-5">
+    <div class="form-group">
+        <label for="first_name"><b>First Name</b></label>
+        <br />
+        <input type="text" class="form-control" id="first_name"  placeholder="Enter First Name" pattern="^[a-zA-Z]+$" name="firstname" [(ngModel)]="user.firstname" #firstName="ngModel"required>
+        <!-- <div *ngIf="firstName.dirty && firstName.touched && firstName.invalid">
+            <div class="text-error text-danger" *ngIf="firstName.errors.required" >First Name Required</div>
+            <div class="text-error text-danger" *ngIf="firstName.errors.pattern" >First Name Should Contain Only Letters</div>   
+        </div> -->
+    </div>
+</div>
+<div class="col-md-5">
+    <div class="form-group">
+        <label for="last_name"><b>Last Name</b></label>
+        <br />
+        <input type="text" class="form-control" id="last_name" placeholder="Enter Last Name" pattern="^[a-zA-Z]+$" name="lastname" [(ngModel)]="user.lastname" #lastName="ngModel" required>
+        <!-- <div *ngIf="lastName.dirty && lastName.touched && lastName.invalid">
+            <div class="text-error text-danger" *ngIf="lastName.errors.required" >Last Name Required</div>
+            <div class="text-error text-danger" *ngIf="lastName.errors.pattern" >Last Name Should Contain Only Letters</div>   
+        </div> -->
+    </div>
+</div>
+<div class="col-md-1"></div>
+</div>
+<div class="row">  
+<div class="col-md-1"></div>             
+<div class="col-md-5">
+        <div class="form-group">
+            <label for="user_contact"><b>Contact Number</b> </label>
+            <br/>                            
+            <input type="text" class="form-control" pattern="^[0-9]{10}$" maxlength="10" name="contactnumber" [(ngModel)]="user.contactnumber" #Contact="ngModel"required> 
+            <!-- <div *ngIf="Contact.dirty && Contact.touched && Contact.invalid">
+                <div class="text-error text-danger" *ngIf="Contact.errors.required" >Contact Number Required</div>
+                <div class="text-error text-danger" *ngIf="Contact.errors.pattern" >Contact Number Should Only Contain Numbers</div>   
+            </div>
+            <div class="text-error text-danger" *ngIf="Contact.touched && UniqueContactNo(Contact.value)">
+                Contact already exist
+            </div> -->
+        </div>
+</div>
+<div class="col-md-5">
+        <div class="form-group">
+            <label for="active"><b>Active</b> </label> 
+    &nbsp;
+     <input type="text"  [(ngModel)]="user.active" id="active" style="width: 200px;" name="active" #active="ngModel">                                  
+            <div class="text-error text-danger">{{msg1}}</div>
+        </div>
+    </div>  
+      
+</div>
+<div class="row">
+        <div class="col-md-1"></div>     
+<div class="col-md-5">
+    <div class="form-group">
+        <label for="regdate"><b>Reg_Date</b> </label> 
+&nbsp;
+ <input type="date" [(ngModel)]="user.regDatetime" id="regdate" style="width: 200px;" name="registrationdate" #regdate="ngModel">
+                                    
+        <!-- <div class="text-error text-danger">{{msg1}}</div> -->
+    </div>
+</div>     
+<div class="col-md-5">
+
+        <div class="form-group">
+                <label for="regdate"><b>Reg_code</b> </label> 
+                <input type="text" class="form-control" pattern="^[0-9]{10}$" maxlength="10" name="registrationcode" [(ngModel)]="user.regcode" #regcode="ngModel"required> 
+            </div>
+</div>
+
+</div>
+<div class="row"> 
+        <div class="col-md-1"></div>
+<div class="col-md-5">
+        
+            <!-- <label for="user_pass"><b>Force_Reset_Password</b> </label>                             -->
+<!--        
+                <a class="nav-link " style="margin-left:100px ;width:300px;" routerLink="resetpasword/">FORCE_RESET_PASSWORD</a>
+         -->
+    
+</div>
+</div>
+
+<div class="row">
+        <div class="col-md-1"></div>
+<div class="col-md-2"></div>
+<div class="mx-auto">
+        <button type="submit"  class="btn btn-primary btn-lg mt-2" style="border:none;align-self: center" >Save</button>
+    <!-- <button type="submit"  class="btn btn-primary btn-lg mt-2" style="border:none;align-self: center" [disabled]="!registrationForm1.valid">Save</button> -->
+</div>
+<div class="col-md-2"></div>
+</div> 
+
+</form>

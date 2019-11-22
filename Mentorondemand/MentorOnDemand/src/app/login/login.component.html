@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-md bg-dark">
+        
+    <ul class="navbar-nav" >
+     <li>
+      <a class="nav-link text-white" routerLink="/startpage/"><b><i class="fa fa-home" style="font-size:24px"></i> &nbsp;&nbsp;Home</b></a>
+     </li>     
+    </ul>
+    <a class="nav-link text-white" style="margin-left: 450px;"> 
+      <b><i class="fa fa-desktop" style="font-size:24px"></i>&nbsp;&nbsp;MENTOR ON DEMAND</b></a>
+     
+
+     </nav>
+<body>
+<div class="back-img ">  
+
+      <div class="col mx-auto " >
+           <br/>
+           <br/>
+           <br/>
+           <br/>
+           <br/>
+           <br/>
+          <div class="card mx-auto login-wrap" style="width:700px;">
+              <div class="card-body ">
+                     
+                     
+
+
+                  <h2 class="text-center">Login</h2>
+                  
+                  <form (ngSubmit)="navigate()" #loginForm="ngForm">
+                      <div class="form-group">
+                          <label for="username" ><b>Username</b></label>
+                          <input type="text" class="form-control" id="username" [(ngModel)]="username" name="usname" placeholder="Enter Username" #usname="ngModel">
+                      </div>
+                      <div class="form-group">
+                          <label for="password" ><b>Password</b></label>
+                          <input type="password" class="form-control" id="password" [(ngModel)]="password" name="pass" placeholder="Enter Password" #pass="ngModel">
+                      </div>
+                      <label for="role"><b>Role</b></label>
+                            
+                      <select class="form-control"  [(ngModel)]="Roleid" id="role" name="userrole" #Role="ngModel">
+                          <option value="0">Select Role</option>
+                          <option value="1">Admin</option>
+                          <option value="2">User</option>
+                          <option value="3">Mentor</option>
+                      </select> 
+                      <br/>
+                      <br/> 
+                      <span>
+                          <button type="submit" style="margin-left:200px;" class=" btn btn-primary">Login</button>
+                          <!-- New here? <a routerLink="/Register/">Register</a> -->
+                      </span>
+                      <br/>
+                      <!-- <span style="color: rgb(224, 14, 14)" *ngIf="check1()">{{msg}}</span> -->
+                  </form>
+              </div>
+          </div>
+      </div>
+
+</div>  
+
+
+
+</body>
+
+
+
+

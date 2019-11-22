@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-sm bg-dark">
+        <a class="nav-link text-white" routerLink="/startpage/"><b><i class="fa fa-home" style="font-size:24px"></i> &nbsp;&nbsp;Home</b></a>
+        <b class="text-white" style="margin-left: 400px;"><i class="fa fa-desktop text-white">&nbsp;&nbsp;</i>MENTOR ON DEMAND</b>
+     
+        <a class="nav-link text-white ml-auto" routerLink="/startpage/"><b>Logout</b></a>
+        
+    </nav>
+    <body>
+        <br/>
+            <h2 class="text-center text-white">LIST OF TECHNOLOGIES</h2>
+<div class="container">
+    <div class="row">
+        <div class="card-columns-4" *ngFor="let t of tech">
+<div class="card "style="width:250px;height:150px;margin-top:60px;">
+<div class="w3-container w3-green">
+<div class="card">
+    <div class="card-body login-wrap">
+
+<h5><p>{{t.id}}</p></h5>
+<br/>
+<h5><p>{{t.name}}</p></h5>
+<br/>
+<h5><p>{{t.toc}}</p></h5>
+<br/>
+<h5><p>{{t.duration}}</p></h5>
+<br/>
+<h5><p>{{t.prerequites}}</p></h5>
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</body>
+

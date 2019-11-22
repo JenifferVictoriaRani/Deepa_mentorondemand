@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-sm bg-dark">
+        <a class="nav-link text-white" routerLink="/startpage/"><b><i class="fa fa-home" style="font-size:24px"></i> &nbsp;&nbsp;Home</b></a>
+        <ul class="navbar-nav mx-auto">  
+                <li>
+                <b class="text-white"><i class="fa fa-desktop text-white"></i>&nbsp;MENTOR ON DEMAND</b>
+                </li>
+             
+                </ul>    
+                <a class="nav-link text-white" routerLink="/startpage/"><b>Logout</b></a>
+                
+    </nav>
+    <body>
+        <div >
+            <h2 class="text-center text-white" >LIST OF MENTORS</h2>
+        </div>
+            <br/>
+            <div class="search-container">
+            
+             <select class="mdb-select md-form colorful-select dropdown-primary " style="width: 250px;margin-left: 400px;" (change)="onChange($event.target.value)"  searchable="Search here..">
+                                   <option></option>
+                                    <option *ngFor="let s of search" value="{{s.id}}">{{s.name}}</option>
+                                  </select> 
+                 <br>
+            <br>
+            </div>
+<div class="container">
+    <div class="row">
+ <div class="card-columns-4" *ngFor="let mr of mentorlists">
+<div class="card"style="width:250px;height:400px;margin-top:75px;">
+    <div class="card-body">
+            
+<h5 ><p>{{mr.mentorName}}</p></h5>
+<h5><p>{{mr.username}}</p></h5>
+<h5><p>{{mr.linkedinUrl}}</p></h5>
+<h5><p>{{mr.regDatetime}}</p></h5>
+<h5><p>{{mr.regCode}}</p></h5>
+<h5><p>{{mr.yearsOfExperience}}</p></h5>
+<h5><p>{{mr.active}}</p></h5>
+<div>
+<button class="btn btn-success" (click)="onsubmit(mr.mentorid)">Nominate</button>
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+</div>
+</div>
+</body>
+
+

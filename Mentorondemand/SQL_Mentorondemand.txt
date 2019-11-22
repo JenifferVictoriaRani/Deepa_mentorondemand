@@ -1,0 +1,476 @@
+USE [master]
+GO
+/****** Object:  Database [mentorondemand]    Script Date: 11/22/2019 3:39:42 PM ******/
+CREATE DATABASE [mentorondemand]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'mentorondemand', FILENAME = N'c:\Program Files (x86)\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\DATA\mentorondemand.mdf' , SIZE = 3264KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+ LOG ON 
+( NAME = N'mentorondemand_log', FILENAME = N'c:\Program Files (x86)\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\DATA\mentorondemand_log.ldf' , SIZE = 816KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+GO
+ALTER DATABASE [mentorondemand] SET COMPATIBILITY_LEVEL = 120
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [mentorondemand].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [mentorondemand] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [mentorondemand] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [mentorondemand] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [mentorondemand] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [mentorondemand] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [mentorondemand] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [mentorondemand] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [mentorondemand] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [mentorondemand] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [mentorondemand] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [mentorondemand] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [mentorondemand] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [mentorondemand] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [mentorondemand] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [mentorondemand] SET  ENABLE_BROKER 
+GO
+ALTER DATABASE [mentorondemand] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [mentorondemand] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [mentorondemand] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [mentorondemand] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [mentorondemand] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [mentorondemand] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [mentorondemand] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [mentorondemand] SET RECOVERY FULL 
+GO
+ALTER DATABASE [mentorondemand] SET  MULTI_USER 
+GO
+ALTER DATABASE [mentorondemand] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [mentorondemand] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [mentorondemand] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [mentorondemand] SET TARGET_RECOVERY_TIME = 0 SECONDS 
+GO
+ALTER DATABASE [mentorondemand] SET DELAYED_DURABILITY = DISABLED 
+GO
+USE [mentorondemand]
+GO
+/****** Object:  Table [dbo].[admin]    Script Date: 11/22/2019 3:39:43 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[admin](
+	[adminid] [bigint] IDENTITY(1,1) NOT NULL,
+	[username] [varchar](50) NULL,
+	[password] [varchar](10) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[adminid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[Mentor_Skills]    Script Date: 11/22/2019 3:39:44 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Mentor_Skills](
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[mid] [bigint] NULL,
+	[sid] [bigint] NULL,
+	[self_rating] [decimal](3, 1) NULL,
+	[years_of_exp] [bigint] NULL,
+	[trainings_delivered] [int] NULL,
+	[facilities_offered] [varchar](20) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[mentordetails]    Script Date: 11/22/2019 3:39:44 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[mentordetails](
+	[mentorid] [bigint] IDENTITY(1,1) NOT NULL,
+	[username] [varchar](50) NULL,
+	[linkedin_url] [varchar](500) NULL,
+	[reg_datetime] [date] NULL,
+	[reg_code] [bigint] NULL,
+	[years_of_experience] [bigint] NULL,
+	[active] [varchar](10) NULL,
+	[password] [varchar](20) NULL,
+	[mentor_name] [varchar](20) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[mentorid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[Technologies]    Script Date: 11/22/2019 3:39:44 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Technologies](
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[Name] [varchar](20) NULL,
+	[TOC] [varchar](20) NULL,
+	[Duration] [bigint] NULL,
+	[Prerequites] [varchar](30) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[Trainings]    Script Date: 11/22/2019 3:39:44 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Trainings](
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[user_id] [bigint] NULL,
+	[mentor_id] [bigint] NULL,
+	[skill_id] [bigint] NULL,
+	[status] [varchar](20) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[usertable]    Script Date: 11/22/2019 3:39:44 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[usertable](
+	[userid] [bigint] IDENTITY(1,1) NOT NULL,
+	[username] [varchar](50) NULL,
+	[password] [varchar](10) NULL,
+	[firstname] [varchar](30) NULL,
+	[lastname] [varchar](30) NULL,
+	[contactnumber] [bigint] NULL,
+	[reg_datetime] [date] NULL,
+	[reg_code] [varchar](20) NULL,
+	[force_reset_password] [bigint] NULL,
+	[active] [varchar](10) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[userid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+SET IDENTITY_INSERT [dbo].[admin] ON 
+
+GO
+INSERT [dbo].[admin] ([adminid], [username], [password]) VALUES (1, N'admin', N'pass')
+GO
+SET IDENTITY_INSERT [dbo].[admin] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Mentor_Skills] ON 
+
+GO
+INSERT [dbo].[Mentor_Skills] ([id], [mid], [sid], [self_rating], [years_of_exp], [trainings_delivered], [facilities_offered]) VALUES (1, 2, 2, CAST(3.4 AS Decimal(3, 1)), 3, 4, N'hfvh')
+GO
+INSERT [dbo].[Mentor_Skills] ([id], [mid], [sid], [self_rating], [years_of_exp], [trainings_delivered], [facilities_offered]) VALUES (2, 3, 3, CAST(4.1 AS Decimal(3, 1)), 5, 4, N'trainings')
+GO
+INSERT [dbo].[Mentor_Skills] ([id], [mid], [sid], [self_rating], [years_of_exp], [trainings_delivered], [facilities_offered]) VALUES (3, 2, 3, CAST(4.1 AS Decimal(3, 1)), 5, 4, N'trainings')
+GO
+INSERT [dbo].[Mentor_Skills] ([id], [mid], [sid], [self_rating], [years_of_exp], [trainings_delivered], [facilities_offered]) VALUES (4, 6, 3, CAST(4.1 AS Decimal(3, 1)), 5, 4, N'trainings')
+GO
+INSERT [dbo].[Mentor_Skills] ([id], [mid], [sid], [self_rating], [years_of_exp], [trainings_delivered], [facilities_offered]) VALUES (8, 2, 2, CAST(5.0 AS Decimal(3, 1)), NULL, 4, N'jeuidhuie')
+GO
+INSERT [dbo].[Mentor_Skills] ([id], [mid], [sid], [self_rating], [years_of_exp], [trainings_delivered], [facilities_offered]) VALUES (9, 2, 2, CAST(5.0 AS Decimal(3, 1)), 3, 4, N'jeuidhuie')
+GO
+INSERT [dbo].[Mentor_Skills] ([id], [mid], [sid], [self_rating], [years_of_exp], [trainings_delivered], [facilities_offered]) VALUES (10, 1, 2, CAST(6.0 AS Decimal(3, 1)), 7, NULL, N'jeni')
+GO
+INSERT [dbo].[Mentor_Skills] ([id], [mid], [sid], [self_rating], [years_of_exp], [trainings_delivered], [facilities_offered]) VALUES (11, 1, 3, CAST(4.0 AS Decimal(3, 1)), 5, NULL, N'jeniiii')
+GO
+SET IDENTITY_INSERT [dbo].[Mentor_Skills] OFF
+GO
+SET IDENTITY_INSERT [dbo].[mentordetails] ON 
+
+GO
+INSERT [dbo].[mentordetails] ([mentorid], [username], [linkedin_url], [reg_datetime], [reg_code], [years_of_experience], [active], [password], [mentor_name]) VALUES (1, N'jeni@gmail.com', N'https://jeni.url', CAST(N'2019-09-08' AS Date), NULL, 5, N'yes', N'pass', N'jeni')
+GO
+INSERT [dbo].[mentordetails] ([mentorid], [username], [linkedin_url], [reg_datetime], [reg_code], [years_of_experience], [active], [password], [mentor_name]) VALUES (2, N'sanks@gmail.com', N'https//sanks.url', CAST(N'2018-11-07' AS Date), NULL, 7, N'yes', N'pass', N'sanks')
+GO
+INSERT [dbo].[mentordetails] ([mentorid], [username], [linkedin_url], [reg_datetime], [reg_code], [years_of_experience], [active], [password], [mentor_name]) VALUES (3, N'jk@gmail.com', N'https//jk.url', CAST(N'2018-09-07' AS Date), NULL, 6, N'yes', N'pass', N'jk')
+GO
+INSERT [dbo].[mentordetails] ([mentorid], [username], [linkedin_url], [reg_datetime], [reg_code], [years_of_experience], [active], [password], [mentor_name]) VALUES (4, N'deebi', NULL, NULL, NULL, NULL, NULL, N'pass', NULL)
+GO
+INSERT [dbo].[mentordetails] ([mentorid], [username], [linkedin_url], [reg_datetime], [reg_code], [years_of_experience], [active], [password], [mentor_name]) VALUES (5, N'dfg', N'http://ygdiyugd.url', CAST(N'2019-11-13' AS Date), 345, 9, N'cvbv', N'dfgdfg', N'dfgdf')
+GO
+INSERT [dbo].[mentordetails] ([mentorid], [username], [linkedin_url], [reg_datetime], [reg_code], [years_of_experience], [active], [password], [mentor_name]) VALUES (6, N'lakshmi', N'http://ygdiyugd.url1', CAST(N'2019-11-12' AS Date), 33, 5, N'fcf', N'decd', N'ecef')
+GO
+INSERT [dbo].[mentordetails] ([mentorid], [username], [linkedin_url], [reg_datetime], [reg_code], [years_of_experience], [active], [password], [mentor_name]) VALUES (11, N'samuel', N'clement.url', CAST(N'2019-11-05' AS Date), 52, 5, N'yes', N'pass', N'clement')
+GO
+SET IDENTITY_INSERT [dbo].[mentordetails] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Technologies] ON 
+
+GO
+INSERT [dbo].[Technologies] ([id], [Name], [TOC], [Duration], [Prerequites]) VALUES (2, N'java', N'platform indepentent', 2, N'aaaa')
+GO
+INSERT [dbo].[Technologies] ([id], [Name], [TOC], [Duration], [Prerequites]) VALUES (3, N'python', N'asef', 3, N'bbbb')
+GO
+SET IDENTITY_INSERT [dbo].[Technologies] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Trainings] ON 
+
+GO
+INSERT [dbo].[Trainings] ([id], [user_id], [mentor_id], [skill_id], [status]) VALUES (1, 2, 2, 2, N'pending')
+GO
+INSERT [dbo].[Trainings] ([id], [user_id], [mentor_id], [skill_id], [status]) VALUES (2, 2, 2, 2, N'pending')
+GO
+INSERT [dbo].[Trainings] ([id], [user_id], [mentor_id], [skill_id], [status]) VALUES (3, 1, 2, 2, N'Pending')
+GO
+INSERT [dbo].[Trainings] ([id], [user_id], [mentor_id], [skill_id], [status]) VALUES (4, 1, 1, 2, N'Pending')
+GO
+SET IDENTITY_INSERT [dbo].[Trainings] OFF
+GO
+SET IDENTITY_INSERT [dbo].[usertable] ON 
+
+GO
+INSERT [dbo].[usertable] ([userid], [username], [password], [firstname], [lastname], [contactnumber], [reg_datetime], [reg_code], [force_reset_password], [active]) VALUES (1, N'deebika@gmail.com', N'deebi', N'deebika', N'sri', 8220551899, CAST(N'2019-09-09' AS Date), NULL, NULL, N'yes')
+GO
+INSERT [dbo].[usertable] ([userid], [username], [password], [firstname], [lastname], [contactnumber], [reg_datetime], [reg_code], [force_reset_password], [active]) VALUES (2, N'deepa@gmail.com', N'pass', N'deepa', N'p', 9842893145, CAST(N'2019-08-09' AS Date), NULL, NULL, N'yes')
+GO
+INSERT [dbo].[usertable] ([userid], [username], [password], [firstname], [lastname], [contactnumber], [reg_datetime], [reg_code], [force_reset_password], [active]) VALUES (4, N'deepa', N'pass', NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[usertable] ([userid], [username], [password], [firstname], [lastname], [contactnumber], [reg_datetime], [reg_code], [force_reset_password], [active]) VALUES (9, N'vshdcv', N'gsdcgv', N'dvcgsdv', N'vdgcg', 74569876, CAST(N'2019-11-08' AS Date), NULL, NULL, N'yes')
+GO
+INSERT [dbo].[usertable] ([userid], [username], [password], [firstname], [lastname], [contactnumber], [reg_datetime], [reg_code], [force_reset_password], [active]) VALUES (10, N'venky', N'pass', N'venkat', N'G', 9845765767, CAST(N'2019-11-07' AS Date), NULL, NULL, N'yes')
+GO
+SET IDENTITY_INSERT [dbo].[usertable] OFF
+GO
+ALTER TABLE [dbo].[Mentor_Skills]  WITH CHECK ADD FOREIGN KEY([mid])
+REFERENCES [dbo].[mentordetails] ([mentorid])
+GO
+ALTER TABLE [dbo].[Mentor_Skills]  WITH CHECK ADD FOREIGN KEY([sid])
+REFERENCES [dbo].[Technologies] ([id])
+GO
+ALTER TABLE [dbo].[Trainings]  WITH CHECK ADD FOREIGN KEY([mentor_id])
+REFERENCES [dbo].[mentordetails] ([mentorid])
+GO
+ALTER TABLE [dbo].[Trainings]  WITH CHECK ADD FOREIGN KEY([skill_id])
+REFERENCES [dbo].[Technologies] ([id])
+GO
+ALTER TABLE [dbo].[Trainings]  WITH CHECK ADD FOREIGN KEY([user_id])
+REFERENCES [dbo].[usertable] ([userid])
+GO
+/****** Object:  StoredProcedure [dbo].[addnewskill]    Script Date: 11/22/2019 3:39:45 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[addnewskill] (@mid bigint,@sid bigint,@self_rating bigint,
+@years_of_exp bigint,@trainings_delivered int,@facilities_offered varchar(20))
+
+AS
+
+
+INSERT INTO Mentor_Skills VALUES(@mid,@sid,@self_rating,@years_of_exp,@trainings_delivered,@facilities_offered)
+
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[ADMINLOGIN]    Script Date: 11/22/2019 3:39:45 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE proc [dbo].[ADMINLOGIN](@USERNAME VARCHAR(50),@PASS VARCHAR(10))
+AS
+insert into admin(username,password)values(@USERNAME,@PASS)
+
+GO
+/****** Object:  StoredProcedure [dbo].[InsertNomination]    Script Date: 11/22/2019 3:39:45 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE proc [dbo].[InsertNomination](@uid bigint,@sid bigint,@mid bigint,@status varchar(20))
+as
+insert into trainings values(@uid,@sid,@mid,'pending')
+GO
+/****** Object:  StoredProcedure [dbo].[MENTORLOGIN]    Script Date: 11/22/2019 3:39:45 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROC [dbo].[MENTORLOGIN](@USERNAME VARCHAR(20),@PASS VARCHAR(20))
+AS
+select * from mentordetails where username=@USERNAME and password=@PASS
+GO
+/****** Object:  StoredProcedure [dbo].[REG_MENTOR]    Script Date: 11/22/2019 3:39:45 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[REG_MENTOR](@username varchar(50),
+@linkedin_url varchar(500),@reg_datetime date,@reg_code varchar(20),@years_of_experience bigint,@active varchar(10))
+AS 
+INSERT INTO mentordetails values(@username,
+@linkedin_url,@reg_datetime ,null,@years_of_experience ,'yes')
+
+GO
+/****** Object:  StoredProcedure [dbo].[Registration]    Script Date: 11/22/2019 3:39:45 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[Registration](@username varchar(20),@password varchar(10),@firstname varchar(30),
+@lastname varchar(30),@contactnumber bigint,@reg_datetime date,@reg_code varchar(20),
+@force_reset_password bigint,@active varchar(10))
+as
+insert into usertable values(@username,@password,@firstname,@lastname,@contactnumber,@reg_datetime,@reg_code,
+@force_reset_password,@active)
+GO
+/****** Object:  StoredProcedure [dbo].[RegistrationUser]    Script Date: 11/22/2019 3:39:45 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[RegistrationUser](@username varchar(20),@password varchar(10),@firstname varchar(30),
+@lastname varchar(30),@contactnumber bigint,@reg_datetime date,@reg_code varchar(20),
+@force_reset_password bigint,@active varchar(10))
+as
+insert into usertable values(@username,@password,@firstname,@lastname,@contactnumber,@reg_datetime,@reg_code,
+@force_reset_password,@active)
+
+GO
+/****** Object:  StoredProcedure [dbo].[RegUser]    Script Date: 11/22/2019 3:39:45 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[RegUser](@username varchar(20),@password varchar(10),@firstname varchar(30),
+@lastname varchar(30),@contactnumber bigint,@reg_datetime date,@reg_code varchar(20),
+@force_reset_password bigint,@active varchar(10))
+as
+insert into usertable values(@username,@password,@firstname,@lastname,@contactnumber,@reg_datetime,null,
+null,'yes')
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[search]    Script Date: 11/22/2019 3:39:45 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+create proc [dbo].[search] (@skillid int)
+as 
+select * from mentordetails,Mentor_Skills,Technologies where [Technologies].id=@skillid and sid=@skillid and mid=mentorid
+ 
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[TECHLIST]    Script Date: 11/22/2019 3:39:45 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[TECHLIST](@Name varchar(20),
+@TOC varchar(20),
+@Duration bigint,
+@Prerequites varchar(30))
+as 
+select * from Technologies
+GO
+/****** Object:  StoredProcedure [dbo].[Technologies_List]    Script Date: 11/22/2019 3:39:45 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[Technologies_List](@Name varchar(20),
+@TOC varchar(20),
+@Duration bigint,
+@Prerequites varchar(30))
+
+as select * from Technologies
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[USERLOGIN]    Script Date: 11/22/2019 3:39:45 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[USERLOGIN](@USERNAME VARCHAR(20),@PASS VARCHAR(20))
+AS
+select * from usertable where username=@USERNAME and password=@PASS
+
+GO
+/****** Object:  StoredProcedure [dbo].[viewreq]    Script Date: 11/22/2019 3:39:45 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+   create proc [dbo].[viewreq](@mentorid bigint)
+   as
+ select * from trainings where mentor_id=@mentorid
+GO
+USE [master]
+GO
+ALTER DATABASE [mentorondemand] SET  READ_WRITE 
+GO

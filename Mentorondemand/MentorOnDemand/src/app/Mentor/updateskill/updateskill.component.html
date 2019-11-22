@@ -1,0 +1,77 @@
+<nav class="navbar navbar-expand-sm bg-dark">         
+<a class="nav-link text-white" routerLink="/startpage/"><b>Home</b></a>
+<ul class="navbar-nav mx-auto">  
+<li>
+<b class="text-white"><i class="fa fa-desktop text-white"></i>&nbsp;MENTOR ON DEMAND</b>
+</li>
+<li>
+<a class="nav-link text-white" style="margin-left:450px;" routerLink="/reqfromuser"><strong>Request From User</strong></a>
+</li>
+</ul>    
+<a class="nav-link text-white" routerLink="/startpage/"><b>Logout</b></a>
+</nav>
+<body>
+<br/>
+<br/>
+<br/>
+
+<div class="card mx-auto login-wrap"  style="width:400px;margin-top: 100px;">
+<form (ngSubmit)="addnewskill()">
+<div class="container top">
+    
+<div class="row ">
+<div class="col">
+<h3 class="text-center">ADD NEW SKILLS</h3>
+<br/>
+<br/>
+<label for="skill"><b>Skills </b> </label> 
+<div clas="col">
+<select id="skill" style="margin-left: 150px;" [(ngModel)]="mskill.sid" name="skill" #skill=ngModel >
+<option value="1">java</option>
+<option value="2">python</option>
+<option value="3" >C#</option>
+</select>
+</div>
+</div>
+<br/>
+<div class="col">
+<label for="ratings"><b>Self Rating</b></label> 
+<div class="mx-auto">
+<input type="number" [(ngModel)]="mskill.selfRating" maxlength="5" style="margin-left: 150px;" id="ratings" name="rating" #rating="ngModel" required>
+    </div>
+    </div>
+<br/>
+<div class="col">
+<label for="batch"><b>Years Of Experience</b></label>  
+<div class="mx-auto">
+<input type="number" [(ngModel)]="mskill.yearsOfExp" style="margin-left: 150px;" id="years" name="years" #years="ngModel">
+</div>
+</div>
+<br/>
+<div class="col ">
+<label for="batch"><b>Trainings Delivered</b></label>  
+<div cla="mx-auto">
+<input type="number"   [(ngModel)]="mskill.trainingsDelivered" style="margin-left: 150px;" id="years" name="years" #years="ngModel">
+</div>
+</div>
+<div class="col">
+<label for="offer"><b>Facilities Offered</b></label> 
+<div class="mx-auto">
+<input type="text" [(ngModel)]="mskill.facilitiesOffered" style="margin-left: 150px;" id="offer" name="offer" #offer="ngModel">
+    </div>     
+    </div>          
+    </div>
+
+   <br/>
+   <br/>
+<div class="row">
+    <div class="col">
+        <button type="submit"  class="btn btn-primary btn-lg mt-2" style="margin-left: 150px; background-color:#ff6347;border:none">Save</button>
+    </div>
+
+</div>
+</div>
+</form>
+</div>
+
+</body>

@@ -1,0 +1,50 @@
+
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-light">
+<ul class="navbar-nav">
+<li class="nav-item active">
+<a class="nav-link text-white" href="#"><strong><i class="fa fa-home" style="font-size:24px"></i> &nbsp;Home</strong></a>
+</li> 
+
+</ul>
+
+        <li> <b class="text-white"><i class="fa fa-desktop text-white"></i>&nbsp;MENTOR ON DEMAND</b>
+                </li>
+<!-- <li class="nav-item active" style="margin-right: 830px;"> -->
+<a class="nav-link text-white" style="margin-left:450px;" routerLink="/addskill"><strong>Add Skill</strong></a>
+
+<!-- </li> -->
+<a class="nav-link text-white ml-auto" routerLink="/startpage/"><b>Logout</b></a>
+        
+</nav> 
+<body>
+<div class="container">
+<div class="row">
+
+<div class="card-columns-4 login-wrap "  style="margin-top: 100px;" *ngFor="let r of userreq">
+
+<div class="card-body">
+
+<!-- <h3 class="card-title">List OF Trainers</h3> -->
+<h5><p class="text-white">Request: {{r.mentorId}}</p></h5>
+
+
+
+<!-- <div class="card">
+<div class="card-body"> -->
+<h3 class="card-title text-center text-white" >Details</h3>
+<h6><p class="text-white">Skill Id: {{r.skillId}}</p></h6>
+<h6><p class="text-white">User Id:  {{r.userId}}</p></h6>
+<h6><p class="text-white">Status:  {{r.status}}</p></h6>
+
+</div>
+</div>
+<!-- </div>
+</div> -->
+
+</div>
+
+</div>
+
+
+</body>

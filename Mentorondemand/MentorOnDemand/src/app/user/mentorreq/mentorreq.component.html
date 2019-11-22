@@ -1,0 +1,31 @@
+
+
+<nav class="navbar navbar-expand-sm bg-dark">
+        <a class="nav-link text-white" routerLink="/startpage/"><b><i class="fa fa-home" style="font-size:24px"></i> &nbsp;&nbsp;Home</b></a>
+    </nav>
+    <body>
+            <h2 class="text-center text-white">REQUEST FROM USER</h2>
+            <br/>
+<div class="container">
+    <div class="row">
+ <div class="card-columns-4" *ngFor="let re of user">
+<div class="card"style="width:250px;height:400px;margin-top:75px;">
+    
+<div class="card-body">
+<h5 ><p>{{mr.mentorid}}</p></h5>      
+<h5 ><p>{{re.userId}}</p></h5>
+<h5><p>{{re.skillId}}</p></h5>
+<h5><p>{{re.status}}</p></h5>
+<div>
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+</div>
+</body>
+
+
